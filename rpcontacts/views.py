@@ -4,8 +4,8 @@
 from PyQt5.QtWidgets import (
     QHBoxLayout,
     QMainWindow,
-    QtWidget,
-}
+    QWidget,
+)
 
 class Window(QMainWindow):
     """Main Window."""
@@ -14,7 +14,7 @@ class Window(QMainWindow):
         super().__init__(parent)
         self.setWindowTitle("RP Contacts")
         sef.resize(550, 250)
-        self.centralWidget = QtWidget()
+        self.centralWidget = QWidget()
         self.setCentralWidget(self.centralWidget)
         self.layout = QHBoxLayout()
         self.centralWidget.setLayout(self.layout)
