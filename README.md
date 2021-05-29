@@ -12,14 +12,14 @@ and give your project a coherent structure
 
 rpcontacts/
 |
-|- rpconstact
-|   |- __init__.py
-|   |- views.py
-|   |- database.py
-|   |- main.py
-|   |- model.py
+|-> rpconstact
+|   |-> __init__.py
+|   |-> views.py
+|   |-> database.py
+|   |-> main.py
+|   |-> model.py
 |
 |
-|- requirments.txt
-|- README.md
-|- rpcontacts.py
+|-> requirments.txt
+|-> README.md
+|-> rpcontacts.py
