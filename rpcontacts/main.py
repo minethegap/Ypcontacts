@@ -6,7 +6,7 @@
 import sys
 
 from PyQt5.QtWidgets import QApplication
-from views import Window
+from .views import Window
 
 def main():
     """RP Contacts main function."""
