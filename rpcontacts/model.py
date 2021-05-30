@@ -40,3 +40,18 @@ class ContactsModel:
         self.model.removeRow(row)
         self.model.submitAll()
         self.model.select()
+
+    # Clearing the Contact Database
+    def clearContacts(self):
+        """Remove all contacts in the database."""
+        # set the data models OnManualSubmit
+        # this allows you to cache all the changes until you call submitAll later on
+        self.model.setEditStrategy(QSqlTableModel.OnManualSubmit)
+        self.model.removeRows(0, self.model.rowCount())
+        self.model.submitAll()
+
+        # reset the model's editStrategy 
+        self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
+        # reloads the data into the model 
+        self.model.select()         
+
