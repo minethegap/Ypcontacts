@@ -48,6 +48,7 @@ class Window(QMainWindow):
                                                                     # to the newly created slot, openAddDialog
                                                                     # this way on the button will auto call slot
         self.deleteButton = QPushButton("Delete")
+        self.deleteButton.clicked.connect(self.deleteContact)
         self.clearAllButton = QPushButton("Clear All")
 
         # create and set a coherent layout for all widgets in the GUI
@@ -65,6 +66,22 @@ class Window(QMainWindow):
         if dialog.exec() == QDialog.Accepted:
             self.contactsModel.addContact(dialog.data)
             self.table.resizeColumnsToContents()
+
+    def deleteContact(self):
+        """Delete the selected contact from the database."""
+        row = self.table.currentIndex().row()
+        if row < 0:
+            return 
+
+        messageBox = QMessageBox.warning(
+            self,
+            "Warning!",
+            "Do you want to remove the selected contact?",
+            QMessageBox.Ok | QMessageBox.Cancel,
+        )
+
+        if messageBox == QMessageBox.Ok:
+            self.contactsModel.deleteContact(row)
 
 class AddDialog(QDialog):
     """Add Contact dialog."""
