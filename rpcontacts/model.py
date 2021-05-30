@@ -24,3 +24,13 @@ class ContactsModel:
             tableModel.setHeaderData(columnIndex, Qt.Horizontal, header)
         return tableModel
 
+    # Inserts a new row at the end of the data model 
+    def addContact(self, data):
+        """Add a contact to the database."""
+        rows = self.model.rowCount()
+        self.model.insertRows(rows, 1)
+        for column, field in enumerate(data):
+            self.model.setData(self.model.index(rows, column + 1 ), field)
+        self.model.submitAll()
+        self.model.select()
+
