@@ -44,6 +44,9 @@ class Window(QMainWindow):
 
         # Create buttons to the GUI
         self.addButton = QPushButton("Add...")
+        self.addButton.clicked.connect(self.openAddDialog)          # connects the clicked() signal of the add 
+                                                                    # to the newly created slot, openAddDialog
+                                                                    # this way on the button will auto call slot
         self.deleteButton = QPushButton("Delete")
         self.clearAllButton = QPushButton("Clear All")
 
@@ -55,6 +58,13 @@ class Window(QMainWindow):
         layout.addWidget(self.clearAllButton)
         self.layout.addWidget(self.table)
         self.layout.addLayout(layout)
+
+    def openAddDialog(self):
+        """Open the Add Contact dialog."""
+        dialog = AddDialog(self)
+        if dialog.exec() == QDialog.Accepted:
+            self.contactsModel.addContact(dialog.data)
+            self.table.resizeColumnsToContents()
 
 class AddDialog(QDialog):
     """Add Contact dialog."""
